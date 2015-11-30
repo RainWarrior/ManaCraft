@@ -1,5 +1,7 @@
 package sham1.manacraft;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -11,6 +13,13 @@ import sham1.manacraft.common.ManaItems;
 
 @Mod(modid = "manacraft", name = "ManaCraft", version = "1.8.8-0.0.0.0")
 public class ManaCraft {
+
+    public static CreativeTabs creativeTab = new CreativeTabs("manacraft_tab") {
+        @Override
+        public Item getTabIconItem() {
+            return Item.getItemFromBlock(ManaBlocks.manaCollector);
+        }
+    };
 
     @Mod.Instance
     public static ManaCraft INSTANCE;
