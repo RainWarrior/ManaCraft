@@ -7,12 +7,17 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import sham1.manacraft.common.CommonProxy;
 import sham1.manacraft.common.ManaBlocks;
 import sham1.manacraft.common.ManaItems;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import sham1.manacraft.handles.GuiHandle;
 
 @Mod(modid = "manacraft", name = "ManaCraft", version = "1.8.8-0.0.0.0")
 public class ManaCraft {
+
+    public static SimpleNetworkWrapper packetNetwork;
 
     public static CreativeTabs creativeTab = new CreativeTabs("manacraft_tab") {
         @Override
@@ -29,6 +34,10 @@ public class ManaCraft {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        packetNetwork = NetworkRegistry.INSTANCE.newSimpleChannel("manacraft");
+
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandle());
+
         ManaItems.registerItems();
         ManaBlocks.registerBlocks();
         ManaBlocks.registerTileEntities();

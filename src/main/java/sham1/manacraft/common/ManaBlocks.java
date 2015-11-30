@@ -3,6 +3,7 @@ package sham1.manacraft.common;
 import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import sham1.manacraft.manipulation.block.ManaCollectorBlock;
+import sham1.manacraft.manipulation.tileentity.ManaCollectorTileEntity;
 
 public class ManaBlocks {
 
@@ -14,6 +15,6 @@ public class ManaBlocks {
     }
 
     public static void registerTileEntities() {
-
+        GameRegistry.registerTileEntity(ManaCollectorTileEntity.class, "mana_collector");
     }
 }
