@@ -9,12 +9,15 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.INetHandlerPlayClient;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.util.ITickable;
+import sham1.manacraft.api.IManaStorage;
 
-public class ManaCollectorTileEntity extends TileEntity implements ITickable, IInventory{
+public class ManaCollectorTileEntity extends TileEntity implements ITickable, IInventory, IManaStorage{
 
     private ItemStack storageStack;
+    private int manaStored;
 
     @Override
     public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
@@ -25,7 +28,6 @@ public class ManaCollectorTileEntity extends TileEntity implements ITickable, II
     public Packet<INetHandlerPlayClient> getDescriptionPacket() {
         NBTTagCompound tag = new NBTTagCompound();
         writeToNBT(tag);
-
         return new S35PacketUpdateTileEntity(pos, 1, tag);
     }
 
@@ -34,6 +36,8 @@ public class ManaCollectorTileEntity extends TileEntity implements ITickable, II
         super.readFromNBT(tag);
 
         if (tag.hasKey("storageStack")) storageStack = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("storageStack"));
+
+        tag.setInteger("manaStored", manaStored);
     }
 
     @Override
@@ -45,11 +49,16 @@ public class ManaCollectorTileEntity extends TileEntity implements ITickable, II
             storageStack.writeToNBT(storageStackTag);
             tag.setTag("storageStack", storageStackTag);
         }
+
+        manaStored = tag.getInteger("manaStored");
     }
 
     @Override
     public void update() {
-
+        if (!worldObj.isRemote) {
+            manaStored++;
+            if (manaStored > 1000000) manaStored = 1000000;
+        }
     }
 
     @Override
@@ -120,7 +129,6 @@ public class ManaCollectorTileEntity extends TileEntity implements ITickable, II
 
     @Override
     public void setField(int id, int value) {
-
     }
 
     @Override
@@ -146,5 +154,20 @@ public class ManaCollectorTileEntity extends TileEntity implements ITickable, II
     @Override
     public IChatComponent getDisplayName() {
         return null;
+    }
+
+    @Override
+    public int getManaStored(EnumFacing facing) {
+        return manaStored;
+    }
+
+    @Override
+    public int getMaxManaStorage(EnumFacing facing) {
+        return 1000000;
+    }
+
+    @Override
+    public void setManaStored(EnumFacing facing, int amount) {
+        manaStored = amount;
     }
 }

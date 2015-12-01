@@ -1,12 +1,18 @@
 package sham1.manacraft.common.container;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import sham1.manacraft.api.GenericPair;
 import sham1.manacraft.manipulation.tileentity.ManaCollectorTileEntity;
+import sham1.manacraft.packets.ManaUpdatePacket;
+import sham1.manacraft.packets.ManaCraftPackets;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ManaCollectorContainer extends Container{
 
@@ -66,5 +72,19 @@ public class ManaCollectorContainer extends Container{
         }
 
         return stack;
+    }
+
+    @Override
+    public void detectAndSendChanges() {
+        super.detectAndSendChanges();
+
+        ManaUpdatePacket packet = new ManaUpdatePacket(new ManaUpdatePacket.ManaUpdateJavabean(te.getPos(), null, te.getManaStored(null)));
+
+        List<EntityPlayerMP> playerCrafters = crafters.stream()
+                .filter(x -> x instanceof EntityPlayerMP)
+                .map(x -> (EntityPlayerMP) x)
+                .collect(Collectors.toList());
+
+        playerCrafters.forEach(player -> ManaCraftPackets.sendPacketTo(packet, player));
     }
 }

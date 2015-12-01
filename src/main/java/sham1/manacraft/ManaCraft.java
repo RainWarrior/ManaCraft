@@ -13,11 +13,10 @@ import sham1.manacraft.common.ManaBlocks;
 import sham1.manacraft.common.ManaItems;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import sham1.manacraft.handles.GuiHandle;
+import sham1.manacraft.packets.ManaCraftPackets;
 
 @Mod(modid = "manacraft", name = "ManaCraft", version = "1.8.8-0.0.0.0")
 public class ManaCraft {
-
-    public static SimpleNetworkWrapper packetNetwork;
 
     public static CreativeTabs creativeTab = new CreativeTabs("manacraft_tab") {
         @Override
@@ -34,7 +33,8 @@ public class ManaCraft {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        packetNetwork = NetworkRegistry.INSTANCE.newSimpleChannel("manacraft");
+        ManaCraftPackets.registerNetwork();
+        ManaCraftPackets.registerPackets(proxy);
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandle());
 
