@@ -37,7 +37,7 @@ public class ManaCollectorTileEntity extends TileEntity implements ITickable, II
 
         if (tag.hasKey("storageStack")) storageStack = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("storageStack"));
 
-        tag.setInteger("manaStored", manaStored);
+        manaStored = tag.getInteger("manaStored");
     }
 
     @Override
@@ -50,13 +50,13 @@ public class ManaCollectorTileEntity extends TileEntity implements ITickable, II
             tag.setTag("storageStack", storageStackTag);
         }
 
-        manaStored = tag.getInteger("manaStored");
+        tag.setInteger("manaStored", manaStored);
     }
 
     @Override
     public void update() {
         if (!worldObj.isRemote) {
-            manaStored++;
+            manaStored += 1000;
             if (manaStored > 1000000) manaStored = 1000000;
         }
     }
