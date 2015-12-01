@@ -3,29 +3,32 @@ package sham1.manacraft.manipulation.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.BlockPos;
-import net.minecraft.world.IBlockAccess;
-import sham1.manacraft.manipulation.tileentity.ManaNodeTileEntity;
+import net.minecraft.util.EnumFacing;
+import sham1.manacraft.ManaCraft;
 
 public class ManaNodeBlock extends Block{
 
     public ManaNodeBlock() {
         super(Material.glass);
+        setCreativeTab(ManaCraft.creativeTab);
     }
 
     public static final PropertyDirection DIRECTION = PropertyDirection.create("direction");
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return 0;
+        return state.getValue(DIRECTION).getIndex();
     }
 
     @Override
-    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-        if (worldIn.getTileEntity(pos) != null) {
-            ManaNodeTileEntity te = (ManaNodeTileEntity) worldIn.getBlockState(pos);
-        }
-        return state;
+    public IBlockState getStateFromMeta(int meta) {
+        return getDefaultState().withProperty(DIRECTION, EnumFacing.getFront(meta));
+    }
+
+    @Override
+    protected BlockState createBlockState() {
+        return new BlockState(this, DIRECTION);
     }
 }

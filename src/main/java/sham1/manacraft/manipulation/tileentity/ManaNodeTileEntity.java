@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 
 public class ManaNodeTileEntity extends TileEntity{
 
-    public EnumFacing dir;
     public List<BlockPos> linkedNodes = new ArrayList<>();
 
     @Override
@@ -32,8 +31,6 @@ public class ManaNodeTileEntity extends TileEntity{
     @Override
     public void writeToNBT(NBTTagCompound tag) {
         super.writeToNBT(tag);
-
-        if (dir != null) tag.setInteger("dir", dir.getIndex());
 
         if (!linkedNodes.isEmpty()) {
             NBTTagList nodeList = new NBTTagList();
@@ -53,8 +50,6 @@ public class ManaNodeTileEntity extends TileEntity{
     @Override
     public void readFromNBT(NBTTagCompound tag) {
         super.readFromNBT(tag);
-
-        if (tag.hasKey("dir")) dir = EnumFacing.getFront(tag.getInteger("dir"));
 
         if (tag.hasKey("linkedNodes")) {
             NBTTagList nodeList = (NBTTagList) tag.getTag("linkedNodes");
