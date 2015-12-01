@@ -23,7 +23,7 @@ public class ManaCollectorGui extends GuiContainer {
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        ResourceLocation background = new ResourceLocation("manacraft", "texture/gui/manaCollector.png");
+        ResourceLocation background = new ResourceLocation("manacraft", "textures/gui/manaCollector.png");
         mc.getTextureManager().bindTexture(background);
 
         int x = (width - xSize)/2;
@@ -38,8 +38,10 @@ public class ManaCollectorGui extends GuiContainer {
 
         fontRendererObj.drawString(I18n.format("mana.amount", te.getManaStored(null), te.getMaxManaStorage(null)), 10, 20, 0xFFFFFFFF, true);
 
-        float manaPropotion = te.getManaStored(null) / te.getMaxManaStorage(null);
+        float manaPropotion = ((float) te.getManaStored(null) / (float) te.getMaxManaStorage(null));
 
-        drawRect(48, 41, Math.round(manaPropotion), 46, 0xFF00B7FB);
+        int barLength = Math.round(49 + (100 * manaPropotion));
+
+        drawRect(48, 41, barLength, 46, 0xFF00B7FB);
     }
 }

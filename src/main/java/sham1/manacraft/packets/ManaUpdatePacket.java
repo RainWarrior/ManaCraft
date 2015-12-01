@@ -92,6 +92,8 @@ public class ManaUpdatePacket implements IMessage{
 
     public static class ManaUpdateJavabean implements Serializable {
 
+        private static final long serialVersionUID = 3947626498109554202L;
+
         private SerializableBlockPos pos;
         private EnumFacing facing;
         private int amount;

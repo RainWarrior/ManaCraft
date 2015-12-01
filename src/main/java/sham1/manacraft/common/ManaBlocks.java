@@ -1,6 +1,7 @@
 package sham1.manacraft.common;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import sham1.manacraft.manipulation.block.ManaCollectorBlock;
 import sham1.manacraft.manipulation.tileentity.ManaCollectorTileEntity;

@@ -5,7 +5,10 @@ import net.minecraft.util.BlockPos;
 import java.io.Serializable;
 
 public class SerializableBlockPos implements Serializable{
-   private  int x, y, z;
+
+    private static final long serialVersionUID = -7955296919319062483L;
+
+    private  int x, y, z;
 
     public SerializableBlockPos() {}
 

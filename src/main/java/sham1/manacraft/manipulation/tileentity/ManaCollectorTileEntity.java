@@ -56,7 +56,7 @@ public class ManaCollectorTileEntity extends TileEntity implements ITickable, II
     @Override
     public void update() {
         if (!worldObj.isRemote) {
-            manaStored += 1000;
+            manaStored++;
             if (manaStored > 1000000) manaStored = 1000000;
         }
     }
