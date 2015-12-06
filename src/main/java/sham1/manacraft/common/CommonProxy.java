@@ -11,12 +11,4 @@ public class CommonProxy {
     public void registerBlockItemRenderer() {
         // NO OP
     }
-
-    public void registerClientSidePackets(SimpleNetworkWrapper packetNetwork) {
-        // NO OP
-    }
-
-    public void registerServerSidePackets(SimpleNetworkWrapper packetNetwork) {
-
-    }
 }

@@ -28,7 +28,7 @@ group= "sham1.manacraft" // http://maven.apache.org/guides/mini/guide-naming-con
 archivesBaseName = "ManaCraft"
 
 minecraft {
-    version = "1.8.8-11.15.0.1595-1.8.8"
+    version = "1.8.8-11.15.0.1609-1.8.8"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.

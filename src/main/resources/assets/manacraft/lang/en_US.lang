@@ -1,1 +1,5 @@
 mana.amount=Mana stored %d/%d
+
+node.too.far.handshake=The nodes you tried to link were too far from each other
+node.already.linked=The nodes you tried to link already were linked
+node.link.success=Link engaged

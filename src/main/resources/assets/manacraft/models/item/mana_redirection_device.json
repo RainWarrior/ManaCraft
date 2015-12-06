@@ -1,0 +1,13 @@
+{
+  "parent": "builtin/generated",
+  "textures": {
+    "layer0": "manacraft:items/mana_redirection_device"
+  },
+  "display": {
+    "firstperson": {
+      "rotation": [0, 90, -45],
+      "translation": [0, 2, 0],
+      "scale": [1, 1, 1]
+    }
+  }
+}
