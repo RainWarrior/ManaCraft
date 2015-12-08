@@ -11,4 +11,8 @@ public class CommonProxy {
     public void registerBlockItemRenderer() {
         // NO OP
     }
+
+    public void registerTESRs() {
+        // NO OP
+    }
 }

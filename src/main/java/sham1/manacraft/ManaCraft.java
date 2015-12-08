@@ -47,7 +47,7 @@ public class ManaCraft {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-
+        proxy.registerTESRs();
     }
 
     @Mod.EventHandler
