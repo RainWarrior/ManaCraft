@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "up": "manacraft:blocks/mana_collector_top",
+    "down": "manacraft:blocks/mana_collector_bottom",
+    "north": "manacraft:blocks/mana_collector_side",
+    "south": "manacraft:blocks/mana_collector_side",
+    "east": "manacraft:blocks/mana_collector_side",
+    "west": "manacraft:blocks/mana_collector_side",
+    "particle": "manacraft:blocks/mana_collector_bottom"
+  }
+}

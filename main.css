@@ -1,0 +1,32 @@
+body {
+  background: url('placeholder.jpg')
+}
+
+#wrapper {
+  margin-left: 10vw;
+  width: 80vw;
+}
+
+#content {
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#navbar {
+  display: table;
+  width: 100%;
+}
+
+#linklist {
+  margin-left;
+  list-style-type: none;
+  display: table-row;
+  width: 100%;
+  border-style: solid;
+}
+
+#linklist > li {
+  display: table-cell;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-style: solid;
+}
