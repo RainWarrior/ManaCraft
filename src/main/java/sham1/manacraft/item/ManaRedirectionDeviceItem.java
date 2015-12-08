@@ -48,6 +48,7 @@ public class ManaRedirectionDeviceItem extends Item {
             String mode = tag.getString("mode");
 
             if (!mode.equals("")) {
+                if (mode.equals("func")) mode = "function";
                 tooltip.add(I18n.format("wand.function.selected", mode));
             } else {
                 tooltip.add(I18n.format("no.wand.function.selected"));
@@ -57,5 +58,11 @@ public class ManaRedirectionDeviceItem extends Item {
         }
     }
 
+    @Override
+    public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
+        NBTTagCompound tag = new NBTTagCompound();
+        tag.setString("mode", "func");
 
+        stack.setTagCompound(tag);
+    }
 }
