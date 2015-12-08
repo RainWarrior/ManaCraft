@@ -1,10 +1,13 @@
 body {
-  background: url('placeholder.jpg')
+  background: url('placeholder.jpg');
+  background-repeat: repeat-x;
+  background-color: #BCBCBC;
 }
 
 #wrapper {
   margin-left: 10vw;
   width: 80vw;
+  z-index: 9999;
 }
 
 #content {
