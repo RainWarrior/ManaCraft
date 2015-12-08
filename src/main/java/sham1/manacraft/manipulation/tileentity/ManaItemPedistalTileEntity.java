@@ -28,7 +28,7 @@ public class ManaItemPedistalTileEntity extends TileEntity{
     public void readFromNBT(NBTTagCompound tag) {
         super.readFromNBT(tag);
 
-        if (tag.hasKey("heldStack")) heldStack = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("heldStack"));
+        if (tag.hasKey("heldStack")) heldStack = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("heldStack")); else heldStack = null;
     }
 
     @Override
