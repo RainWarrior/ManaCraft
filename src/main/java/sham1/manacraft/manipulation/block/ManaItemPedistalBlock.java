@@ -64,4 +64,20 @@ public class ManaItemPedistalBlock extends Block {
 
         return true;
     }
+
+    @Override
+    public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) {
+        if (!worldIn.isRemote) {
+            ManaItemPedistalTileEntity te = (ManaItemPedistalTileEntity) worldIn.getTileEntity(pos);
+
+            if (te.getHeldItem().isPresent()) {
+                ItemStack stack = te.getHeldItem().get();
+
+                EntityItem itemEntity = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, stack);
+                worldIn.spawnEntityInWorld(itemEntity);
+
+                te.setHeldItem(null);
+            }
+        }
+    }
 }

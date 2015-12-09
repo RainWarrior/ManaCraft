@@ -4,9 +4,35 @@
     "texture": "manacraft:blocks/mana_pedistal"
   },
   "elements": [
-    {
+      {
       "from": [0, 0, 0],
-      "to": [16, 3, 16],
+      "to": [16,3, 16],
+      "shade": false,
+      "faces": {
+        "up": { "uv": [0, 0, 16, 16], "texture": "#texture" },
+        "down": { "uv": [0, 0, 16, 16], "texture": "#texture" },
+        "west": { "uv": [0, 0, 16, 16], "texture": "#texture" },
+        "east": { "uv": [0, 0, 16, 16], "texture": "#texture" },
+        "north": { "uv": [0, 0, 16, 16], "texture": "#texture" },
+        "south": { "uv": [0, 0, 16, 16], "texture": "#texture" }
+       }
+      },
+      {
+      "from": [4, 3, 4],
+      "to": [12,12, 12],
+      "shade": false,
+      "faces": {
+          "up": { "uv": [0, 0, 16, 16], "texture": "#texture" },
+          "down": { "uv": [0, 0, 16, 16], "texture": "#texture" },
+          "west": { "uv": [0, 0, 16, 16], "texture": "#texture" },
+          "east": { "uv": [0, 0, 16, 16], "texture": "#texture" },
+          "north": { "uv": [0, 0, 16, 16], "texture": "#texture" },
+          "south": { "uv": [0, 0, 16, 16], "texture": "#texture" }
+        }
+      },
+    {
+      "from": [0, 12, 0],
+      "to": [16, 16, 16],
       "shade": false,
       "faces": {
         "up": { "uv": [0, 0, 16, 16], "texture": "#texture" },
